@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node_version: 21
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Release pull request
+        uses: changesets/action@v1
+        env:
+          GUTHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
