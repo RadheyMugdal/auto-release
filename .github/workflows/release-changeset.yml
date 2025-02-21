@@ -1,4 +1,4 @@
-name: Release
+name: Release using changeset
 
 on:
   workflow_dispatch:
@@ -20,4 +20,4 @@ jobs:
       - name: Release pull request
         uses: changesets/action@v1
         env:
-          GUTHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
